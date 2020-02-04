@@ -1,0 +1,50 @@
+<div>
+  <h2>Resoibses...</h2>
+  <!-- Question 1 -->
+  <div class="row">
+    <div class="col-4">
+      {{answers[0].question}}
+    </div>
+    <div class="col-8">
+      <div [innerHTML]="validateResponses(answers[0], responses[1])"></div>
+    </div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="row">
+    <div class="col-4">
+      {{answers[1].question}}
+    </div>
+    <div class="col-8">
+      <div [innerHTML]="validateResponses(answers[1], responses[2])"></div>
+    </div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="row">
+    <div class="col-4">
+      {{answers[2].question}}
+    </div>
+    <div class="col-8">
+      <div [innerHTML]="validateResponses(answers[2], responses[3])"></div>
+    </div>
+  </div>
+
+  <!-- Question 4 -->
+  <div class="row">
+    <div class="col-4">
+      {{answers[3].question}}
+    </div>
+    <div class="col-8">
+      <div [innerHTML]="validateResponses(answers[3], responses[4])"></div>
+    </div>
+  </div>
+
+  <app-RestaurantPicker></app-RestaurantPicker>
+
+
+
+</div>
+
+
+

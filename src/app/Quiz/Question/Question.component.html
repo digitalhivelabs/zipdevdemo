@@ -1,0 +1,45 @@
+<div *ngIf="question.responseInterval >= 0">
+  <span>{{remindSeconds}}</span>
+</div>
+<div>
+  {{question.question}}
+</div>
+<div *ngIf="question.notes">
+  <div class="alert alert-info" role="alert">
+    <span [innerHTML]="question.notes"></span>
+  </div>
+</div>
+<div>
+  
+  <div *ngIf="question.type === 0">
+    <select class="form-control" (change)="onValueSelected()" [(ngModel)]="response[question.id]">
+      <option></option>
+    <option [ngValue]="itm.displayValue" *ngFor="let itm of question.choices">{{itm.displayValue}}</option>
+    </select>  
+  </div>
+
+  <div *ngIf="question.type === 1">
+    <div class="form-check" *ngFor="let itm of question.choices">
+      <input type="checkbox" (change)="onOptionSelected(itm.displayValue)" class="form-check-input" id="chkSelection">
+    <label class="form-check-label" for="chkSelection">{{itm.displayValue}}</label>
+    </div>    
+  </div>
+
+  <div *ngIf="question.type === 2">
+    <div *ngFor="let itm of question.choices; let idx = index">
+      <span>{{itm.notes}}</span>
+      <input class="form-control" (change)="onValueSelected()" [(ngModel)]="this.response[question.id]" type="text"/>  
+    </div>
+  </div>
+ 
+  <div *ngIf="question.type === 3">
+      
+    <div *ngFor="let itm of question.choices; let idx = index">
+      <span>{{itm.notes}}</span>
+      <textarea [(ngModel)]="freeTextResponses[idx]" (change)="onValueSelected()" class="form-control"></textarea>
+    </div>
+
+  </div>
+ 
+
+</div>
