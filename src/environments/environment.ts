@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  APIKey: 'ef2f6dbf02d3e8776f714ef098914f7d',
+  ApiUrl: 'https://developers.zomato.com/api/v2.1/'
 };

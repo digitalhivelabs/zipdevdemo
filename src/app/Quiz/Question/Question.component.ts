@@ -67,7 +67,6 @@ export class QuestionComponent implements OnInit {
       counter--;
 
       if ( counter < 0 ) {
-        console.log('automatic trigger');
         clearInterval(this.timer);
         this.valueChanged.emit({
           automatictrigger: this.isAutomaticTrigger,

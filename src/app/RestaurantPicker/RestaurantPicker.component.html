@@ -1,29 +1,35 @@
-<p>
-  Select your favorite San Diego restaurant
+<p class="lead">
+  Now please select your favorite San Diego restaurant:
 </p>
 
-<div class="media border p-2 m-2">
-  <img src="https://lh4.googleusercontent.com/proxy/Jhf1e7_R6QjD-k3nt_RKV4wWpKD2GETUqJXoeOGKf6bbj5ZIh6aeERo4X0kQI5ceJmMvMhezywamykSp6j8qwe0IEGoQwjYqmE06CedJxTN3HxkyA_qUxw7lcgxa8CLg-Q" class="mr-3" alt="...">
+
+<div *ngIf="data">
+
+
+<div class="media border p-2 m-2" *ngFor="let itm of data.restaurants">
+  <img [src]="itm.restaurant.thumb" class="mr-3 col-3 d-none d-sm-block" alt="...">
   <div class="media-body">
     <div class="row">
-      <div class="col-10">
-        <h5 class="mt-0">Media heading</h5>
+      <div class="col-sm-8 col-md-9">
+        <h5 class="mt-0">{{itm.restaurant.name}}</h5>
       </div>
-      <div class="col-2">
-        <a href="#" class="badge badge-success">4.7 / 5</a>
-        <p><small>votes 23</small></p>
+      <div class="col-sm-4 col-md-3">
+      <span class="badge badge-success" ><span class="lead"><strong> {{itm.restaurant.user_rating.aggregate_rating}}</strong></span> / 5 </span>
+      <p><small>votes {{itm.restaurant.user_rating.votes}}</small></p>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        <p><small>Coronado * Small Dinner</small></p>
+        <p class="m-0"><small>{{itm.restaurant.location.city}} • {{itm.restaurant.cuisines}}</small></p>
       </div>
     </div>
     <hr/>
     <div class="row">
       <div class="col-12">
-        <p><small> <span class="text-success">Open Now</span> * <span class="text-danger">Mexican</span> * <span>Cost $45 for two</span></small> </p>
+      <p><small><span class="text-success">{{itm.restaurant.timings}}</span> • <span>Average Cost for two: {{ itm.restaurant.average_cost_for_two | currency }} {{ itm.restaurant.currency }}</span></small></p>
       </div>
     </div>
   </div>
+</div>
+
 </div>

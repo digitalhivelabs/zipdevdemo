@@ -1,21 +1,25 @@
-<div *ngIf="question.responseInterval >= 0">
-  <span>{{remindSeconds}}</span>
+<div class="text-right mb-3" *ngIf="question.responseInterval >= 0">
+  <span class="border border-primary rounded-lg p-2 lead">Time for response: {{remindSeconds}}</span>
 </div>
 <div>
-  {{question.question}}
+  <label>{{question.question}}</label>
 </div>
 <div *ngIf="question.notes">
   <div class="alert alert-info" role="alert">
-    <span [innerHTML]="question.notes"></span>
+    <small>
+      <span [innerHTML]="question.notes"></span>
+    </small>
   </div>
 </div>
 <div>
   
   <div *ngIf="question.type === 0">
-    <select class="form-control" (change)="onValueSelected()" [(ngModel)]="response[question.id]">
-      <option></option>
-    <option [ngValue]="itm.displayValue" *ngFor="let itm of question.choices">{{itm.displayValue}}</option>
-    </select>  
+    <div class="form-group">
+      <select class="form-control" (change)="onValueSelected()" [(ngModel)]="response[question.id]">
+        <option></option>
+      <option [ngValue]="itm.displayValue" *ngFor="let itm of question.choices">{{itm.displayValue}}</option>
+      </select>
+    </div>  
   </div>
 
   <div *ngIf="question.type === 1">
@@ -27,15 +31,15 @@
 
   <div *ngIf="question.type === 2">
     <div *ngFor="let itm of question.choices; let idx = index">
-      <span>{{itm.notes}}</span>
-      <input class="form-control" (change)="onValueSelected()" [(ngModel)]="this.response[question.id]" type="text"/>  
+      <span class="text-muted"><small><i>{{itm.notes}}</i></small></span>
+      <input class="form-control" (input)="onValueSelected()" [(ngModel)]="this.response[question.id]" type="text"/>  
     </div>
   </div>
  
   <div *ngIf="question.type === 3">
       
     <div *ngFor="let itm of question.choices; let idx = index">
-      <span>{{itm.notes}}</span>
+      <span class="text-muted"><small><i>{{itm.notes}}</i></small></span>
       <textarea [(ngModel)]="freeTextResponses[idx]" (change)="onValueSelected()" class="form-control"></textarea>
     </div>
 

@@ -37,15 +37,11 @@ export class QuizComponent implements OnInit {
   }
 
   onResponse(valueSelected: any) {
-
-    console.log(valueSelected);
-
     if (valueSelected.automatictrigger) {
       this.responses = valueSelected.response;
       this.onNextQuestion();
 
     } else {
-      console.log('changed values?', this.responses, valueSelected);
       if (this.responses === undefined || this.responses !== valueSelected.response) {
         this.responses = valueSelected;
         this.isStepChanged = true;
